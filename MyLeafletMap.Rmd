@@ -1,0 +1,31 @@
+---
+title: "Leaflet Map"
+author: "Miguel Ortiz"
+date: "September 5th, 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Leaflet
+
+This is a presentation to show the map generated for this assignment.
+
+- It shows some different restaurants arround Paris.
+
+## Map
+
+```{r cars, echo = FALSE, comment=FALSE}
+library(leaflet)
+df <- data.frame(latitude = c(48.859329, 48.815329, 48.759324, 48.659329, 48.859219, 48.851329, 48.539329),
+                 longitude = c(2.2297509, 2.2177509, 2.2077509, 2.2167409, 2.1977509, 2.2175209, 2.2166409),
+                 popup = c("Le Castel Cafe", "Chez Ribe", "Charlote", "Maggies", "Ohlala", "Pizza DiCarlo", "Paco Torreznos"))
+
+df %>%
+leaflet() %>%
+addTiles() %>%
+addMarkers(lat = df$latitude, lng=df$longitude, popup = df$popup, clusterOptions = markerClusterOptions())
+```
+
